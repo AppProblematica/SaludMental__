@@ -2,10 +2,23 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Proyecto {
+
+    //Variables globales
+    static String[] actividadesCortoPlazo = new String[100];
+    static int[] horasSemanales = new int[100];
+    static String[] actividadesLargoPlazo = new String[100];
+    static int[] meses = new int[100];
+    static int numActividadesCortoPlazo = 0;
+    static int numActividadesLargoPlazo = 0;
+
+
     //Función main
     public static void main(String[] args) {
         //Creación de escaner
         Scanner kb = new Scanner(System.in);
+
+        //variable de control del ciclo
+        boolean ciclo = true;
 
         //Función para mostrar mensajes motivadores diferentes en cada ejecución
         mostrarMensajeAleatorio();
@@ -20,27 +33,134 @@ public class Proyecto {
 
         System.out.println("");
 
-        System.out.println("Las opciones disponible son: 1. Autodiagnóstico, 2. Diario personal, 3...");
-        System.out.println("¿Qué opción eliges?");
+        System.out.println("Bienvenido a tu aplicación de confianza sobre salud mental");
+
+        do{
+            System.out.println();
+            System.out.println("Las opciones disponible son: ");
+            System.out.println("1. Autodiagnóstico");
+            System.out.println("2. Diario personal");
+            System.out.println("3. Programación de actividades");
+            System.out.println("4. Recompensas");
+            System.out.println("5. ¡Necesito ayuda de inmediato!");
+            System.out.println("6. Salir");
+            System.out.println();
+
+            System.out.print("Ingrese una opción: ");
+            int opcion = kb.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    autodiagnostico();
+                break; 
+
+                case 2:
+                    diarioPersonal();
+                break;
+
+                case 3:
+                    programacionActividades();
+                break;
+
+                case 4: 
+                    reclamarRecompensa();
+                break;
+
+                case 5:
+                    ayudaEmergencia();
+                break;
+
+                case 6:
+                    ciclo = false;
+                break;
+
+                default:
+                    System.out.println("Opción no válida");
+                break;
+
+            }
+        } while(ciclo);
+
+    }
+
+    //Función ayuda de emergencia
+    public static void ayudaEmergencia(){
+        System.out.println("Esta es nuestra línea de emergencia, para comunicarte con el profesional Santiago, llama a este número de inmediato");
+        System.out.println("305 3230459");
+    }
+
+    //Función para reclamar las recompensas
+    public static void reclamarRecompensa(){
+        Scanner kb = new Scanner(System.in);
+
+        System.out.println("Bienvenido al sistema de recompensas");
+        System.out.print("Digite la cantidad de días en qué ha iniciado la aplicación");
+        int dias = kb.nextInt();
+
+        if (dias>=7 && dias <14){
+            System.out.println("Ahora tienes acceso a una llamada con nuestro profesional de la salud Samuel, su número es: 323 4294978");
+        } if (dias >= 15 && dias <30){
+            System.out.println("Vas por gran camino, tu recompensa esta vez es acceso gratuito a los documentos dispuestos por la OMS acerca de la salud mental");
+        } if (dias >=30){
+            System.out.println("Tu progreso es impresionante, has alcanzado el nivel máximo, te otorgamos este certificado por usar nuestra aplicación");
+            System.out.println("https://drive.google.com/file/d/1IL2QeSQtZt5Fuyg3MLhHi1SUu8fbLDjF/view?usp=share_link");
+        } else {
+            System.out.println("Sigue intentándolo, recuerda que tu primera recompensa comienza en el día 7 de uso");
+        }
+    }
+
+    //Función programar actividades semanales
+    public static void programacionActividades(){
+        Scanner kb = new Scanner(System.in);
+    
+        System.out.println("Bienvenido al sistema de programación de actividades. Seleccione una opción:");
+        System.out.println("1. Semanales / 2. A largo plazo / 3. Mostrar actividades");
+    
         int opcion = kb.nextInt();
-
-        switch (opcion) {
-            case 1:
-                autodiagnostico();
-            break; 
-
-            case 2:
-                diarioPersonal();
-            break;
-
-            default:
-                System.out.println("Opción no válida");
-            break;
-
+    
+        if (opcion == 1) {
+            System.out.println();
+            System.out.print("Ingrese la cantidad de actividades semanales: ");
+            int n = kb.nextInt();
+    
+            for (int i = 0; i < n; i++) {
+                kb.nextLine(); // Consumir la nueva línea pendiente
+                System.out.print("Ingrese el nombre de la actividad " + (i + 1) + ": ");
+                actividadesCortoPlazo[numActividadesCortoPlazo] = kb.nextLine();
+                System.out.print("Ingrese las horas semanales dedicadas a " + actividadesCortoPlazo[numActividadesCortoPlazo] + ": ");
+                horasSemanales[numActividadesCortoPlazo] = kb.nextInt();
+                numActividadesCortoPlazo++;
+            }
+        } else if (opcion == 2) {
+            System.out.print("Ingrese la cantidad de actividades a largo plazo: ");
+            int n = kb.nextInt();
+    
+            for (int i = 0; i < n; i++) {
+                kb.nextLine(); // Consumir la nueva línea pendiente
+                System.out.print("Ingrese el nombre de la actividad " + (i + 1) + ": ");
+                actividadesLargoPlazo[numActividadesLargoPlazo] = kb.nextLine();
+                System.out.print("Ingrese los meses dedicados a " + actividadesLargoPlazo[numActividadesLargoPlazo] + ": ");
+                meses[numActividadesLargoPlazo] = kb.nextInt();
+                numActividadesLargoPlazo++;
+            }
         }
 
-        // kb.close();
+        System.out.println();
+        System.out.println("Actividades semanales:");
+    
+        for (int i = 0; i < numActividadesCortoPlazo; i++) {
+            System.out.println(actividadesCortoPlazo[i] + ": " + horasSemanales[i] + " horas semanales");
+        }
+    
+        System.out.println();
+        System.out.println("Actividades a largo plazo:");
+    
+        for (int i = 0; i < numActividadesLargoPlazo; i++) {
+            System.out.println(actividadesLargoPlazo[i] + ": " + meses[i] + " meses");
+        }
     }
+    
+
 
     //Función diario personal
     public static void diarioPersonal() {
@@ -57,7 +177,7 @@ public class Proyecto {
     public static void registrarEstadoDiario() {
         Scanner kb = new Scanner(System.in);
 
-        System.out.println("Califica tu estado de ánimo actual en una escala del 1 al 5, donde 1 es muy malo y 5 es muy bueno:");
+        System.out.print("Califica tu estado de ánimo actual en una escala del 1 al 5, donde 1 es muy malo y 5 es muy bueno:");
         int animo = kb.nextInt();
 
         switch(animo) {
@@ -93,13 +213,13 @@ public class Proyecto {
 
         System.out.println("Bienvenido al sistema de inicio de sesión");
 
-        System.out.println("Ingrese su nombre: ");
+        System.out.print("Ingrese su nombre: ");
         String nombre = kb.nextLine();
 
-        System.out.println("Ingrese su correo electrónico: ");
+        System.out.print("Ingrese su correo electrónico: ");
         String correo = kb.nextLine();
 
-        System.out.println("Ingrese su contraseña: ");
+        System.out.print("Ingrese su contraseña: ");
         String contraseña = kb.next();
 
         System.out.println("Sus datos de inicio se sesión son: ");
