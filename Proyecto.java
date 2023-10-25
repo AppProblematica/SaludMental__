@@ -43,7 +43,8 @@ public class Proyecto {
             System.out.println("3. Programación de actividades");
             System.out.println("4. Recompensas");
             System.out.println("5. ¡Necesito ayuda de inmediato!");
-            System.out.println("6. Salir");
+            System.out.println("6. Acceso a recursos de salud mental");
+            System.out.println("7. Salir");
             System.out.println();
 
             System.out.print("Ingrese una opción: ");
@@ -69,8 +70,12 @@ public class Proyecto {
                 case 5:
                     ayudaEmergencia();
                 break;
-
+                
                 case 6:
+                    recursosSaludMental();
+                break;
+
+                case 7:
                     ciclo = false;
                 break;
 
@@ -81,6 +86,84 @@ public class Proyecto {
             }
         } while(ciclo);
 
+    }
+
+    //Función acceso a recursos
+    public static void recursosSaludMental(){
+
+        Scanner kb = new Scanner(System.in);
+
+        ;
+        System.out.println("1. Audiovisual");
+        System.out.println("2. Textual");
+        System.out.println("3. Audio");
+        System.out.println();
+        System.out.print("Selecciona el tipo de recurso que deseas: ");
+        int opcion = kb.nextInt();
+
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Los recursos disponibles son: ");
+
+                System.out.println();
+
+                System.out.println("MEDITACIÓN GUIADA PARA RELAJAR LA MENTE Y EL CUERPO | EASY ZEN");
+                System.out.println("https://www.youtube.com/watch?v=EvzCoSaYSnY&ab_channel=EasyZen");
+
+                System.out.println();
+
+                System.out.println("Meditación Guiada: Relajación Muscular Profunda | Nickauls Children's Hospital");
+                System.out.println("https://www.youtube.com/watch?v=9svic7ldL2w&ab_channel=NicklausChildren%27sHospital");
+                
+                System.out.println("Meditación guiada para relajar cuerpo y mente en 10 minutos | Energía Vital");
+                System.out.println("https://www.youtube.com/watch?v=WjO_098iXOw&ab_channel=Energ%C3%ADaVital");
+
+            break;
+
+            case 2:
+                System.out.println("Los recursos disponibles son: ");
+
+                System.out.println();
+
+                System.out.println("LA MEDITACIÓN Y SALUD MENTAL. LA MEDITACIÓN Y SUS EFECTOS ANATOMO - PSICOLÓGICOS | Alejandro José Linconao");
+                System.out.println("https://yogainclusivocr.com/wp-content/uploads/2021/02/Meditacinysaludmental-2019.pdf");
+
+                System.out.println();
+
+                System.out.println("MEDITACIÓN GUÍADA PARA SANAR CUERPO Y ALMA");
+                System.out.println("https://www.cuerpomente.com/salud-mental/meditacion-sanar-cuerpo-mente_10188");
+
+                System.out.println();
+
+                System.out.println("MEDITACIÓN Y MINDFULNESS");
+                System.out.println("https://cdn2.hubspot.net/hubfs/426027/Ebooks/Ebook_Meditaci%C3%B3n%20y%20Mindfulness.pdf");
+            break;
+
+            case 3:
+                System.out.println("Los recursos disponibles son: ");
+
+                System.out.println();
+
+                System.out.println("ENTIENDE TU MENTE");
+                System.out.println("https://open.spotify.com/show/0sGGLIDnnijRPLef7InllD?si=58952bd0812744ff");
+
+                System.out.println();
+
+                System.out.println("SALUD MENTAL PARA TODOS");
+                System.out.println("https://podcasts.google.com/search/Salud%20Mental");
+
+                System.out.println();
+
+                System.out.println("PYMTALKS");
+                System.out.println("https://open.spotify.com/show/7gTAgYitf3Wuoz8noeb2pU?si=60ff2de18c8b4754");
+            break;
+
+            default: 
+                System.out.println("Opción inválida");
+            break;
+
+        }
     }
 
     //Función ayuda de emergencia
@@ -177,7 +260,7 @@ public class Proyecto {
     public static void registrarEstadoDiario() {
         Scanner kb = new Scanner(System.in);
 
-        System.out.print("Califica tu estado de ánimo actual en una escala del 1 al 5, donde 1 es muy malo y 5 es muy bueno:");
+        System.out.print("Califica tu estado de ánimo actual en una escala del 1 al 5, donde 1 es muy malo y 5 es muy bueno: ");
         int animo = kb.nextInt();
 
         switch(animo) {
