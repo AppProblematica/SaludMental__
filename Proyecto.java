@@ -35,7 +35,7 @@ public class Proyecto {
 
         System.out.println("Bienvenido a tu aplicación de confianza sobre salud mental");
 
-        do{
+        while(ciclo){
             System.out.println();
             System.out.println("Las opciones disponible son: ");
             System.out.println("1. Autodiagnóstico");
@@ -84,7 +84,7 @@ public class Proyecto {
                 break;
 
             }
-        } while(ciclo);
+        }
 
     }
 
@@ -305,6 +305,7 @@ public class Proyecto {
         System.out.print("Ingrese su contraseña: ");
         String contraseña = kb.next();
 
+        System.out.println();
         System.out.println("Sus datos de inicio se sesión son: ");
         System.out.println(nombre);
         System.out.println(correo);
@@ -489,8 +490,6 @@ public class Proyecto {
         } else if(resultado>=20 && resultado<=27) {
             System.out.println("Depresión grave; Garantiza un tratamiento activo con psicoterapia, medicación o una combinación de ambos.");
         }
-
-        kb.close();
     }
 
     //Funcionalidad de mensajes motivadores
